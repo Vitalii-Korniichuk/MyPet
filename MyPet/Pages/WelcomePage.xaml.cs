@@ -24,5 +24,20 @@ namespace MyPet.Pages
         {
             InitializeComponent();
         }
+
+        private void GitHubButton_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/Vitalii-Korniichuk");
+        }
+
+        private void LinkedInButton_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.linkedin.com/in/vitalii-korniichuk-153220241/");
+        }
+
+        private void StackOverFlowButton_Click(object sender, RoutedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://stackoverflow.com/users/19274334/vitalii-korniichuk");
+        }
     }
 }

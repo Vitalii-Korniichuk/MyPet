@@ -9,9 +9,32 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="2*"/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+        <Viewbox>
+            <DataGrid x:Name="PetGrid" Style="{StaticResource DataGrid}" CellEditEnding="PetGrid_CellEditEnding">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Created" Binding="{Binding Created, StringFormat=\{0:dd.MM.yy\}}"/>
+                    <DataGridTextColumn Header="Visited" Binding="{Binding Visited, StringFormat=\{0:dd.MM.yy\}}"/>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Menu>
+                                    <MenuItem Header="Edit">
+                                        <MenuItem x:Name="RenameButton" Header="Rename" Click="RenameButton_Click"/>
+                                        <MenuItem x:Name="DeleteButton" Header="Delete" Click="DeleteButton_Click"/>
+                                    </MenuItem>
+                                </Menu>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Viewbox>
+        <Button x:Name="LoadButton" Grid.Row="1" Content="Load" Click="LoadButton_Click"/>
+        <Button x:Name="AddButton" Grid.Row="2" Content="Add" Click="AddButton_Click"/>
     </Grid>
 </Page>

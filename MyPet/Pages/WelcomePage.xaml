@@ -7,8 +7,24 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="WelcomePage">
-
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button x:Name="GitHubButton" Grid.Column="0" Grid.Row="1" Click="GitHubButton_Click">
+            <Image Source="/MyPet;component/Source/Images/github.png"/>
+        </Button>
+        <Button x:Name="LinkedInButton" Grid.Column="1" Grid.Row="1" Click="LinkedInButton_Click">
+            <Image Source="/MyPet;component/Source/Images/linkedin.png"/>
+        </Button>
+        <Button x:Name="StackOverFlowButton" Grid.Column="2" Grid.Row="1" Click="StackOverFlowButton_Click">
+            <Image Source="/MyPet;component/Source/Images/stackoverflow.png"/>
+        </Button>
     </Grid>
 </Page>
