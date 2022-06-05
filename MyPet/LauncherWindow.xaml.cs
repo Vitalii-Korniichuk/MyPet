@@ -39,6 +39,7 @@ namespace MyPet
         private void SettingsButton_Checked(object sender, RoutedEventArgs e)
         {
             PageFrame.Navigate(settings);
+            settings.GetSettings();
         }
     }
 }

@@ -23,6 +23,23 @@ namespace MyPet.Pages
         public SettingsPage()
         {
             InitializeComponent();
+            GetSettings();
+        }
+
+        private void ApplyButton_Click(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.MusicVolume = Convert.ToInt32(MusicVolumeSlider.Value);
+            Properties.Settings.Default.EffectVolume = Convert.ToInt32(EffectVolumeSlider.Value);
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            GetSettings();
+        }
+        public void GetSettings()
+        {
+            MusicVolumeSlider.Value = Convert.ToDouble(Properties.Settings.Default.MusicVolume);
+            EffectVolumeSlider.Value = Convert.ToDouble(Properties.Settings.Default.EffectVolume);
         }
     }
 }
