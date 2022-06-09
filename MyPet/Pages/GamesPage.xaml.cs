@@ -28,14 +28,14 @@ namespace MyPet.Pages
         private void PetGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             Pet pet = PetGrid.SelectedItem as Pet;
-            pet.Name = (PetGrid.Columns[0].GetCellContent(e.Row.Item) as TextBox).Text;
+            pet.Name = (PetGrid.Columns[1].GetCellContent(e.Row.Item) as TextBox).Text;
             PetGrid.IsReadOnly = true;
             RefreshGrid();
         }
         private void RenameButton_Click(object sender, RoutedEventArgs e)
         {
             PetGrid.IsReadOnly = false;
-            PetGrid.CurrentCell = new DataGridCellInfo(PetGrid.SelectedItem, PetGrid.Columns[0]);
+            PetGrid.CurrentCell = new DataGridCellInfo(PetGrid.SelectedItem, PetGrid.Columns[1]);
             PetGrid.BeginEdit();
         }
 
@@ -51,13 +51,10 @@ namespace MyPet.Pages
 
             }
         }
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
-            Pet pet = new Pet();
-            pet.Name = "The new pet";
-            pet.Created = DateTime.Now.Date;
-            entities.Pets.Add(pet);
-            RefreshGrid();
+            LauncherWindow launcher = (LauncherWindow)Window.GetWindow(this);
+            launcher.PageFrame.Navigate(new CreatingPage());
         }
 
         private void RefreshGrid()

@@ -4,28 +4,32 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyPet"
+        xmlns:converters="clr-namespace:Smilees.Converters"
         mc:Ignorable="d"
         Title="Launcher"
+        x:Name="Window"
         Height="450" Width="800"
+        MinHeight="{Binding ElementName=GamesButton, Path=ActualHeight, Converter={converters:PercentageConverter}, ConverterParameter='4'}"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition MinWidth="{Binding ElementName=Window, Path=ActualWidth, Converter={converters:PercentageConverter}, ConverterParameter='0.1'}"/>
+            <ColumnDefinition Width="4*" MinWidth="{Binding ElementName=Window, Path=ActualWidth, Converter={converters:PercentageConverter}, ConverterParameter='0.6'}"/>
         </Grid.ColumnDefinitions>
-        
+
         <!--Navigation menu-->
-        <Viewbox Style="{StaticResource NavigationMenu}" Grid.Column="0">
-        <StackPanel>
-            <RadioButton x:Name="GamesButton" Content="Games" Checked="GamesButton_Checked"/>
-             <RadioButton x:Name="GalleryButton" Content="Gallery" Checked="GalleryButton_Checked"/>
-                <RadioButton x:Name="SettingsButton" Content="Settings" Checked="SettingsButton_Checked"/>
-            </StackPanel>
-        </Viewbox>
-        <GridSplitter Width="2"/>
+        <StackPanel Background="{StaticResource Gray}">
+            <RadioButton x:Name="GamesButton" Content="Games" Checked="GamesButton_Checked" Style="{StaticResource NavigationMenuButton}"/>
+            <RadioButton x:Name="GalleryButton" Content="Gallery" Checked="GalleryButton_Checked" Style="{StaticResource NavigationMenuButton}"
+                         Height="{Binding ElementName=GamesButton, Path=ActualHeight}"/>
+            <RadioButton x:Name="SettingsButton" Content="Settings" Checked="SettingsButton_Checked" Style="{StaticResource NavigationMenuButton}"
+                         Height="{Binding ElementName=GamesButton, Path=ActualHeight}"/>
+        </StackPanel>
+
+        <GridSplitter Width="4" Background="{StaticResource DarkGray}"/>
         
         <!--Pages' frame-->
         <Frame x:Name="PageFrame" NavigationUIVisibility="Hidden" Source="/MyPet;component/Pages/WelcomePage.xaml"
-               Grid.Column="1"/>
+               Grid.Column="2"/>
     </Grid>
 </Window>

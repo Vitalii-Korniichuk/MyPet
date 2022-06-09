@@ -18,13 +18,13 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Button x:Name="GitHubButton" Grid.Column="0" Grid.Row="1" Click="GitHubButton_Click">
-            <Image Source="/MyPet;component/Source/Images/github.png"/>
+            <Image Source="/MyPet;component/Source/Images/Logos/github.png"/>
         </Button>
         <Button x:Name="LinkedInButton" Grid.Column="1" Grid.Row="1" Click="LinkedInButton_Click">
-            <Image Source="/MyPet;component/Source/Images/linkedin.png"/>
+            <Image Source="/MyPet;component/Source/Images/Logos/linkedin.png"/>
         </Button>
         <Button x:Name="StackOverFlowButton" Grid.Column="2" Grid.Row="1" Click="StackOverFlowButton_Click">
-            <Image Source="/MyPet;component/Source/Images/stackoverflow.png"/>
+            <Image Source="/MyPet;component/Source/Images/Logos/stackoverflow.png"/>
         </Button>
     </Grid>
 </Page>

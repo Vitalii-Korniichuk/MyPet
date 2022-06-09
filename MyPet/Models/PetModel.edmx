@@ -11,8 +11,10 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TypeImageSource" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Created" Type="date" Nullable="false" />
-          <Property Name="Visited" Type="date" />
+          <Property Name="Visited" Type="date" Nullable="false" />
         </EntityType>
         <EntityContainer Name="PetDatabaseModelStoreContainer">
           <EntitySet Name="Pet" EntityType="Self.Pet" Schema="dbo" store:Type="Tables" />
@@ -27,8 +29,10 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Created" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Visited" Type="DateTime" Precision="0" />
+          <Property Name="Visited" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="TypeImageSource" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityContainer Name="PetDatabaseEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Pets" EntityType="Self.Pet" />
@@ -42,11 +46,13 @@
           <EntitySetMapping Name="Pets">
             <EntityTypeMapping TypeName="PetDatabaseModel.Pet">
               <MappingFragment StoreEntitySet="Pet">
-                <ScalarProperty Name="Visited" ColumnName="Visited" />
-                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="TypeImageSource" ColumnName="TypeImageSource" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                </MappingFragment>
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Visited" ColumnName="Visited" />
+              </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
         </EntityContainerMapping>

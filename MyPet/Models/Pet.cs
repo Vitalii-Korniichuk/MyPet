@@ -16,7 +16,9 @@ namespace MyPet.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string Type { get; set; }
         public System.DateTime Created { get; set; }
-        public Nullable<System.DateTime> Visited { get; set; }
+        public System.DateTime Visited { get; set; }
+        public string TypeImageSource { get; set; }
     }
 }

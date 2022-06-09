@@ -1,0 +1,40 @@
+﻿<Page x:Class="MyPet.Pages.CreatingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MyPet.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <!--Inputs-->
+        <StackPanel Grid.ColumnSpan="2" Orientation="Horizontal">
+            <ComboBox>
+                <ComboBoxItem x:Name="BasicType" IsSelected="True">
+                    <Image Source="/MyPet;component/Source/Images/Types/basic.png"/>
+                </ComboBoxItem>
+                <ComboBoxItem x:Name="CowboyType">
+                    <Image Source="/MyPet;component/Source/Images/Types/cowboy.png"/>
+                </ComboBoxItem>
+                <ComboBoxItem x:Name="NerdType">
+                    <Image Source="/MyPet;component/Source/Images/Types/nerd.png"/>
+                </ComboBoxItem>
+                <ComboBoxItem x:Name="RapperType">
+                    <Image Source="/MyPet;component/Source/Images/Types/rapper.png"/>
+                </ComboBoxItem>
+            </ComboBox>
+            <TextBox x:Name="NameBox"/>
+        </StackPanel>
+        
+        <!--Controls-->
+        <Button x:Name="CreateButton" Content="Create" Grid.Row="1" Click="CreateButton_Click"/>
+        <Button x:Name="CancelButton" Content="Cancel" Grid.Row="2" Click="CancelButton_Click"/>
+    </Grid>
+</Page>

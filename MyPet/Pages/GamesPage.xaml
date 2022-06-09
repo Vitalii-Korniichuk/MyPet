@@ -16,6 +16,13 @@
         <Viewbox>
             <DataGrid x:Name="PetGrid" Style="{StaticResource DataGrid}" CellEditEnding="PetGrid_CellEditEnding">
                 <DataGrid.Columns>
+                    <DataGridTemplateColumn MaxWidth="{Binding RelativeSource={RelativeSource Self}, Path=MinWidth}" CanUserResize="False">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding TypeImageSource}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                     <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
                     <DataGridTextColumn Header="Created" Binding="{Binding Created, StringFormat=\{0:dd.MM.yy\}}"/>
                     <DataGridTextColumn Header="Visited" Binding="{Binding Visited, StringFormat=\{0:dd.MM.yy\}}"/>
@@ -35,6 +42,6 @@
             </DataGrid>
         </Viewbox>
         <Button x:Name="LoadButton" Grid.Row="1" Content="Load" Click="LoadButton_Click"/>
-        <Button x:Name="AddButton" Grid.Row="2" Content="Add" Click="AddButton_Click"/>
+        <Button x:Name="CreateButton" Grid.Row="2" Content="Create" Click="CreateButton_Click"/>
     </Grid>
 </Page>
