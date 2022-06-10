@@ -1,12 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <FontFamily x:Key="PoppinsBold">../Source/Fonts/poppins_bold.ttf</FontFamily>
-    <FontFamily x:Key="PoppinsBoldItalic">../Source/Fonts/poppins_bold_italic.ttf</FontFamily>
+    <FontFamily x:Key="PoppinsBold">../Source/Fonts/poppins_bold.ttf#Poppins Bold</FontFamily>
+    <FontFamily x:Key="PoppinsBoldItalic">../Source/Fonts/poppins_bold_italic.ttf#Poppins Bold Italic</FontFamily>
     <FontFamily x:Key="PoppinsRegular">../Source/Fonts/poppins_regular.ttf#Poppins</FontFamily>
-    <FontFamily x:Key="PoppinsItalic">../Source/Fonts/poppins_italic.ttf</FontFamily>
-    <FontFamily x:Key="PoppinsThin">../Source/Fonts/poppins_thin.ttf</FontFamily>
-    <FontFamily x:Key="PoppinsThinItalic">../Source/Fonts/poppins_thin_italic.ttf</FontFamily>
+    <FontFamily x:Key="PoppinsItalic">../Source/Fonts/poppins_italic.ttf#Poppins Italic</FontFamily>
+    <FontFamily x:Key="PoppinsThin">../Source/Fonts/poppins_thin.ttf#Poppins Thin</FontFamily>
+    <FontFamily x:Key="PoppinsThinItalic">../Source/Fonts/poppins_thin_italic.ttf#Poppins Thin Italic</FontFamily>
 
     <SolidColorBrush x:Key="LightGray">#555555</SolidColorBrush>
     <SolidColorBrush x:Key="Gray">#333333</SolidColorBrush>

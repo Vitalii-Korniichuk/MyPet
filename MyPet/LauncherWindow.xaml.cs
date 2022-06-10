@@ -1,4 +1,5 @@
-﻿using MyPet.Pages;
+﻿using MyPet.Models;
+using MyPet.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,8 @@ namespace MyPet
 {
     public partial class LauncherWindow : Window
     {
+        public static Pet mainPet = new Pet();
+
         readonly GamesPage games = new GamesPage();
         readonly GalleryPage gallery = new GalleryPage();
         readonly SettingsPage settings = new SettingsPage();

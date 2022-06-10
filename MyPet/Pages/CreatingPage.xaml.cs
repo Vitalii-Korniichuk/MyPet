@@ -20,7 +20,7 @@ namespace MyPet.Pages
     /// <summary>
     /// Interaction logic for CreatingPage.xaml
     /// </summary>
-    public partial class CreatingPage : Page
+    public partial class CreatingPage : PageBase
     {
         PetDatabaseEntities entities = new PetDatabaseEntities();
         public CreatingPage()
@@ -39,16 +39,12 @@ namespace MyPet.Pages
                 pet.Visited = DateTime.Now.Date;
                 entities.Pets.Add(pet);
                 entities.SaveChanges();
-                GameWindow game = new GameWindow();
-                game.Show();
-                LauncherWindow launcher = (LauncherWindow)Window.GetWindow(this);
-                launcher.Close();
+                LoadGameWindow(pet);
             }
         }
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            LauncherWindow launcher = (LauncherWindow)Window.GetWindow(this);
-            launcher.PageFrame.Navigate(new GamesPage());
+            ChangeLauncherFrame(new GamesPage());
         }
         private string GetPetType()
         {

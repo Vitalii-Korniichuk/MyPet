@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 
 namespace MyPet.Pages
 {
-    public partial class GamesPage : Page
+    public partial class GamesPage : PageBase
     {
         readonly PetDatabaseEntities entities = new PetDatabaseEntities();
         public GamesPage()
@@ -48,7 +48,7 @@ namespace MyPet.Pages
         {
             if (PetGrid.SelectedItem != null)
             {
-
+                LoadGameWindow(PetGrid.SelectedItem as Pet);
             }
         }
         private void CreateButton_Click(object sender, RoutedEventArgs e)
