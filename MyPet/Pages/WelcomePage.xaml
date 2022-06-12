@@ -30,8 +30,7 @@
                 </Label>
             </StackPanel>
         </Viewbox>
-        <Viewbox Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Top">
-        <StackPanel Orientation="Horizontal">
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
             <Button x:Name="GitHubButton" Style="{StaticResource LauncherButton}" Grid.Column="0" Grid.Row="1" Click="GitHubButton_Click">
                 <Image Source="/MyPet;component/Source/Images/Logos/github.png"/>
             </Button>
@@ -39,6 +38,5 @@
                 <Image Source="/MyPet;component/Source/Images/Logos/linkedin.png"/>
             </Button>
         </StackPanel>
-        </Viewbox>
     </Grid>
 </Page>

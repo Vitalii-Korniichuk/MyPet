@@ -5,34 +5,34 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MyPet.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800">
+      d:DesignHeight="450" d:DesignWidth="800"
+      Background="{StaticResource Gray}">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition/>
+            <RowDefinition Height="4*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Viewbox>
-            <DataGrid x:Name="PetGrid" Style="{StaticResource DataGrid}" CellEditEnding="PetGrid_CellEditEnding">
+        <Viewbox VerticalAlignment="Top" Margin="10">
+            <DataGrid x:Name="PetGrid" Style="{StaticResource LauncherDataGrid}" CellStyle="{StaticResource LauncherDataGridCell}" CellEditEnding="PetGrid_CellEditEnding">
                 <DataGrid.Columns>
-                    <DataGridTemplateColumn MaxWidth="{Binding RelativeSource={RelativeSource Self}, Path=MinWidth}" CanUserResize="False">
+                    <DataGridTemplateColumn MaxWidth="{Binding RelativeSource={RelativeSource Self}, Path=MinWidth}" CanUserResize="False" HeaderStyle="{StaticResource LauncherDataGridColumnHeader}">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Image Source="{Binding TypeImageSource}"/>
+                                <Image Source="{Binding TypeImageSource}" Margin="2"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-                    <DataGridTextColumn Header="Created" Binding="{Binding Created, StringFormat=\{0:dd.MM.yy\}}"/>
-                    <DataGridTextColumn Header="Visited" Binding="{Binding Visited, StringFormat=\{0:dd.MM.yy\}}"/>
-                    <DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" HeaderStyle="{StaticResource LauncherDataGridColumnHeader}"/>
+                    <DataGridTextColumn Header="Created" Binding="{Binding Created, StringFormat=\{0:dd.MM.yy\}}" HeaderStyle="{StaticResource LauncherDataGridColumnHeader}"/>
+                    <DataGridTextColumn Header="Visited" Binding="{Binding Visited, StringFormat=\{0:dd.MM.yy\}}" HeaderStyle="{StaticResource LauncherDataGridColumnHeader}"/>
+                    <DataGridTemplateColumn HeaderStyle="{StaticResource LauncherDataGridColumnHeader}" CanUserResize="False">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Menu>
-                                    <MenuItem Header="Edit">
-                                        <MenuItem x:Name="RenameButton" Header="Rename" Click="RenameButton_Click"/>
-                                        <MenuItem x:Name="DeleteButton" Header="Delete" Click="DeleteButton_Click"/>
+                                    <MenuItem Header="Edit" Style="{StaticResource LauncherMenuItem}">
+                                        <MenuItem x:Name="RenameButton" Header="Rename" Style="{StaticResource LauncherMenuItem}" Click="RenameButton_Click"/>
+                                        <MenuItem x:Name="DeleteButton" Header="Delete" Style="{StaticResource LauncherMenuItem}" Click="DeleteButton_Click"/>
                                     </MenuItem>
                                 </Menu>
                             </DataTemplate>
@@ -41,7 +41,13 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Viewbox>
-        <Button x:Name="LoadButton" Grid.Row="1" Content="Load" Click="LoadButton_Click"/>
-        <Button x:Name="CreateButton" Grid.Row="2" Content="Create" Click="CreateButton_Click"/>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="LoadButton" Content="Load" Style="{StaticResource LauncherButton}" Click="LoadButton_Click"/>
+            <Button x:Name="CreateButton" Content="Create" Grid.Column="1" Style="{StaticResource LauncherButton}" Click="CreateButton_Click"/>
+        </Grid>
     </Grid>
 </local:PageBase>
