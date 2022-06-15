@@ -5,36 +5,67 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MyPet.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800">
+      d:DesignHeight="450" d:DesignWidth="800"
+      Background="{StaticResource Gray}">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        
+
+        <Viewbox x:Name="TypeLabel" HorizontalAlignment="Left">
+            <Label Content="Type:" Style="{StaticResource HeadingLabel}"/>
+        </Viewbox>
+        <Viewbox x:Name="NameLabel"  HorizontalAlignment="Left" Grid.Row="1">
+            <Label Content="Name:" Style="{StaticResource HeadingLabel}"/>
+        </Viewbox>
+
         <!--Inputs-->
-        <StackPanel Grid.ColumnSpan="2" Orientation="Horizontal">
-            <ComboBox>
-                <ComboBoxItem x:Name="BasicType" IsSelected="True">
-                    <Image Source="/MyPet;component/Source/Images/Types/basic.png"/>
-                </ComboBoxItem>
+        <ComboBox x:Name="TypeComboBox"  VerticalAlignment="Center" Grid.Column="1" Grid.ColumnSpan="2" Margin="10" ItemContainerStyle="{StaticResource LauncherComboBoxItem}">
+            <ComboBoxItem x:Name="BasicType" IsSelected="True">
+                <Viewbox>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/MyPet;component/Source/Images/Types/basic.png" Height="64"/>
+                        <Label Content="Basic" Style="{StaticResource RegularLabel}" Foreground="{StaticResource Gray}"/>
+                    </StackPanel>
+                </Viewbox>
+            </ComboBoxItem>
                 <ComboBoxItem x:Name="CowboyType">
-                    <Image Source="/MyPet;component/Source/Images/Types/cowboy.png"/>
+                    <StackPanel Orientation="Horizontal">
+                    <Image Source="/MyPet;component/Source/Images/Types/cowboy.png" Height="64"/>
+                        <Viewbox>
+                            <Label Content="Cowboy" Style="{StaticResource RegularLabel}" Foreground="{StaticResource Gray}"/>
+                        </Viewbox>
+                    </StackPanel>
                 </ComboBoxItem>
                 <ComboBoxItem x:Name="NerdType">
-                    <Image Source="/MyPet;component/Source/Images/Types/nerd.png"/>
+                    <StackPanel Orientation="Horizontal">
+                    <Image Source="/MyPet;component/Source/Images/Types/nerd.png" Height="64"/>
+                        <Viewbox>
+                            <Label Content="Nerd" Style="{StaticResource RegularLabel}" Foreground="{StaticResource Gray}"/>
+                        </Viewbox>
+                    </StackPanel>
                 </ComboBoxItem>
                 <ComboBoxItem x:Name="RapperType">
-                    <Image Source="/MyPet;component/Source/Images/Types/rapper.png"/>
+                    <StackPanel Orientation="Horizontal">
+                    <Image Source="/MyPet;component/Source/Images/Types/rapper.png" Height="64"/>
+                        <Viewbox>
+                            <Label Content="Rapper" Style="{StaticResource RegularLabel}" Foreground="{StaticResource Gray}"/>
+                        </Viewbox>
+                    </StackPanel>
                 </ComboBoxItem>
             </ComboBox>
-            <TextBox x:Name="NameBox"/>
-        </StackPanel>
-        
+        <TextBox x:Name="NameBox" Style="{StaticResource LauncherTextBox}" Height="{Binding ElementName=TypeComboBox, Path=ActualHeight}" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"/>
+
         <!--Controls-->
-        <Button x:Name="CreateButton" Content="Create" Grid.Row="1" Click="CreateButton_Click"/>
-        <Button x:Name="CancelButton" Content="Cancel" Grid.Row="2" Click="CancelButton_Click"/>
+        <Button x:Name="CreateButton" Content="Create" Style="{StaticResource LauncherButton}" Grid.Column="2" Grid.Row="2" Click="CreateButton_Click"/>
+        <Button x:Name="CancelButton" Content="Cancel" Style="{StaticResource LauncherButton}" Grid.ColumnSpan="2" Grid.Row="2" Click="CancelButton_Click"/>
     </Grid>
 </local:PageBase>
