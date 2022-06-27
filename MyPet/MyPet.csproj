@@ -85,7 +85,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\GameProgressBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GameWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\BedroomPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -97,11 +105,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\GameroomPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\GamesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\HomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\KitchenPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ShopPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -120,6 +144,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controls\GameProgressBar.xaml.cs">
+      <DependentUpon>GameProgressBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\PercentageConverter.cs" />
     <Compile Include="GameWindow.xaml.cs">
@@ -143,14 +170,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PetModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\BedroomPage.xaml.cs">
+      <DependentUpon>BedroomPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\CreatingPage.xaml.cs">
       <DependentUpon>CreatingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\GalleryPage.xaml.cs">
       <DependentUpon>GalleryPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\GameroomPage.xaml.cs">
+      <DependentUpon>GameroomPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\GamesPage.xaml.cs">
       <DependentUpon>GamesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\KitchenPage.xaml.cs">
+      <DependentUpon>KitchenPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PageBase.cs" />
     <Compile Include="Pages\SettingsPage.xaml.cs">
@@ -166,6 +205,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\ShopPage.xaml.cs">
+      <DependentUpon>ShopPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
     </Compile>
@@ -181,6 +223,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -197,6 +240,7 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <Resource Include="Source\Fonts\poppins_bold.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -238,6 +282,20 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>PetDatabase.mdf</DependentUpon>
     </Content>
+    <Resource Include="Source\Images\Bars\adult.png" />
+    <Resource Include="Source\Images\Bars\baby.png" />
+    <Resource Include="Source\Images\Bars\child.png" />
+    <Resource Include="Source\Images\Bars\grand.png" />
+    <Resource Include="Source\Images\Bars\money.png" />
+    <Resource Include="Source\Images\Bars\bed.png" />
+    <Resource Include="Source\Images\Bars\cup.png" />
+    <Resource Include="Source\Images\Bars\meat.png" />
+    <Resource Include="Source\Images\Bars\popper.png" />
+    <Resource Include="Source\Images\Pets\big_smile.png" />
+    <Resource Include="Source\Images\Pets\no_smile.png" />
+    <Resource Include="Source\Images\Pets\open_mouth.png" />
+    <Resource Include="Source\Images\Pets\sad.png" />
+    <Resource Include="Source\Images\Environments\home.png" />
     <Resource Include="Source\Images\Logos\github.png" />
     <Resource Include="Source\Images\Logos\linkedin.png" />
     <Resource Include="Source\Images\Types\basic.png" />
@@ -260,9 +318,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controls\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

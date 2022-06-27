@@ -16,10 +16,9 @@ namespace MyPet.Pages
             LauncherWindow launcher = (LauncherWindow)Window.GetWindow(this);
             launcher.PageFrame.Navigate(page);
         }
-        public void LoadGameWindow(Pet pet)
+        public void LoadGameWindow(int id)
         {
-            LauncherWindow.mainPet = pet;
-            GameWindow game = new GameWindow();
+            GameWindow game = new GameWindow(id);
             game.Show();
             CloseLauncherWindow();
         }

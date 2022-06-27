@@ -25,25 +25,25 @@ namespace MyPet.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("100")]
-        public int MusicVolume {
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Fullscreen {
             get {
-                return ((int)(this["MusicVolume"]));
+                return ((bool)(this["Fullscreen"]));
             }
             set {
-                this["MusicVolume"] = value;
+                this["Fullscreen"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("100")]
-        public int EffectVolume {
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool BorderVisibility {
             get {
-                return ((int)(this["EffectVolume"]));
+                return ((bool)(this["BorderVisibility"]));
             }
             set {
-                this["EffectVolume"] = value;
+                this["BorderVisibility"] = value;
             }
         }
     }

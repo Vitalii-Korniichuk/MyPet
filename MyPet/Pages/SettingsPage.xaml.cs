@@ -18,7 +18,7 @@ namespace MyPet.Pages
     /// <summary>
     /// Interaction logic for SettingsPage.xaml
     /// </summary>
-    public partial class SettingsPage : Page
+    public partial class SettingsPage : PageBase
     {
         public SettingsPage()
         {
@@ -28,8 +28,12 @@ namespace MyPet.Pages
 
         private void ApplyButton_Click(object sender, RoutedEventArgs e)
         {
-            Properties.Settings.Default.MusicVolume = Convert.ToInt32(MusicVolumeSlider.Value);
-            Properties.Settings.Default.EffectVolume = Convert.ToInt32(EffectVolumeSlider.Value);
+            Properties.Settings.Default.Fullscreen = Convert.ToBoolean(FullscreenBox.IsChecked);
+            Properties.Settings.Default.BorderVisibility = Convert.ToBoolean(BorderVisibilityBox.IsChecked);
+            Properties.Settings.Default.Save();
+            LauncherWindow launcher = (LauncherWindow)Window.GetWindow(this);
+            launcher.GamesButton.IsChecked = true;
+            ChangeLauncherFrame(new GamesPage());
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -38,8 +42,8 @@ namespace MyPet.Pages
         }
         public void GetSettings()
         {
-            MusicVolumeSlider.Value = Convert.ToDouble(Properties.Settings.Default.MusicVolume);
-            EffectVolumeSlider.Value = Convert.ToDouble(Properties.Settings.Default.EffectVolume);
+            FullscreenBox.IsChecked = Convert.ToBoolean(Properties.Settings.Default.Fullscreen);
+            BorderVisibilityBox.IsChecked = Convert.ToBoolean(Properties.Settings.Default.BorderVisibility);
         }
     }
 }

@@ -16,7 +16,7 @@
         <Viewbox VerticalAlignment="Top" Margin="10">
             <DataGrid x:Name="PetGrid" Style="{StaticResource LauncherDataGrid}" CellStyle="{StaticResource LauncherDataGridCell}" CellEditEnding="PetGrid_CellEditEnding">
                 <DataGrid.Columns>
-                    <DataGridTemplateColumn MaxWidth="{Binding RelativeSource={RelativeSource Self}, Path=MinWidth}" CanUserResize="False" HeaderStyle="{StaticResource LauncherDataGridColumnHeader}">
+                    <DataGridTemplateColumn MaxWidth="{Binding RelativeSource={RelativeSource Self}, Path=MinWidth}" HeaderStyle="{StaticResource LauncherDataGridColumnHeader}">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Image Source="{Binding TypeImageSource}" Margin="2"/>
@@ -26,7 +26,7 @@
                     <DataGridTextColumn Header="Name" Binding="{Binding Name}" HeaderStyle="{StaticResource LauncherDataGridColumnHeader}"/>
                     <DataGridTextColumn Header="Created" Binding="{Binding Created, StringFormat=\{0:dd.MM.yy\}}" HeaderStyle="{StaticResource LauncherDataGridColumnHeader}"/>
                     <DataGridTextColumn Header="Visited" Binding="{Binding Visited, StringFormat=\{0:dd.MM.yy\}}" HeaderStyle="{StaticResource LauncherDataGridColumnHeader}"/>
-                    <DataGridTemplateColumn HeaderStyle="{StaticResource LauncherDataGridColumnHeader}" CanUserResize="False">
+                    <DataGridTemplateColumn HeaderStyle="{StaticResource LauncherDataGridColumnHeader}">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Menu>

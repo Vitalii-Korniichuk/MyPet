@@ -35,11 +35,16 @@ namespace MyPet.Pages
                 pet.Name = NameBox.Text;
                 pet.Type = GetPetType();
                 pet.TypeImageSource = GetTypeImageSource();
-                pet.Created = DateTime.Now.Date;
-                pet.Visited = DateTime.Now.Date;
+                pet.Created = DateTime.Now;
+                pet.Visited = DateTime.Now;
+                pet.Money = 100;
+                pet.Hunger = 69120 / 2;
+                pet.Thirst = 25920 / 2;
+                pet.Exhaustion = 95040 / 2;
+                pet.Boredom = 25920 / 2;
                 entities.Pets.Add(pet);
                 entities.SaveChanges();
-                LoadGameWindow(pet);
+                LoadGameWindow(pet.Id);
             }
         }
         private void CancelButton_Click(object sender, RoutedEventArgs e)

@@ -2,11 +2,11 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MyPet.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="MusicVolume" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">100</Value>
+    <Setting Name="Fullscreen" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="EffectVolume" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">100</Value>
+    <Setting Name="BorderVisibility" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

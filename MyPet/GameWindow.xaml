@@ -1,16 +1,49 @@
-﻿<Window x:Class="MyPet.GameWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyPet"
+        xmlns:controls="clr-namespace:MyPet.Controls"
+        xmlns:converters="clr-namespace:Smilees.Converters"
+        xmlns:Models="clr-namespace:MyPet.Models" x:Class="MyPet.GameWindow"
         mc:Ignorable="d"
-        Title="My Pet"
-        Height="450" Width="800">
+        Title="My Pet" x:Name="Window"
+        Height="450" Width="800"
+        Closing="Window_Closing">
     <Grid>
-        <Frame x:Name="EnvironmentFrame"/>
-        <Viewbox>
-            <Image x:Name="PetImage"/>
+        <Frame x:Name="EnvironmentFrame" NavigationUIVisibility="Hidden"/>
+        <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Height="{Binding ActualHeight, ConverterParameter=0.35, Converter={converters:PercentageConverter}, ElementName=Window}">
+            <StackPanel x:Name="InfoPanel">
+                <StackPanel Orientation="Horizontal">
+                    <Image x:Name="AgeImage" Source="Source/Images/Bars/baby.png" Margin="20"/>
+                    <Viewbox>
+                        <Label x:Name="NameLabel" Style="{StaticResource RegularLabel}" FontSize="72" Foreground="{StaticResource Gray}"/>
+                    </Viewbox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Image x:Name="MoneyImage" Source="Source/Images/Bars/money.png" Margin="20"/>
+                    <Viewbox>
+                        <Label x:Name="MoneyLabel" Style="{StaticResource RegularLabel}" FontSize="72" Foreground="{StaticResource Gray}"/>
+                    </Viewbox>
+                </StackPanel>
+                <controls:GameProgressBar x:Name="HungerBar" BarColor="Green" MaxValue="69120" BarImageSource="/MyPet;component/Source/Images/Bars/meat.png"/>
+                <controls:GameProgressBar x:Name="ThirstBar" BarColor="Green" MaxValue="25920" BarImageSource="/MyPet;component/Source/Images/Bars/cup.png"/>
+                <controls:GameProgressBar x:Name="ExhaustionBar" BarColor="Green" MaxValue="95040" BarImageSource="/MyPet;component/Source/Images/Bars/bed.png"/>
+                <controls:GameProgressBar x:Name="BoredomBar" BarColor="Green" MaxValue="25920" BarImageSource="/MyPet;component/Source/Images/Bars/popper.png"/>
+            </StackPanel>
+        </Viewbox>
+        <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Image x:Name="PetImage" Source="Source/Images/Pets/big_smile.png" Margin="700"/>
+        </Viewbox>
+        <Viewbox HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <StackPanel Orientation="Horizontal">
+                <RadioButton x:Name="HomeButton" IsChecked="True" Content="Home" Style="{StaticResource GameNavigationButton}" Checked="HomeButton_Checked"/>
+                <RadioButton x:Name="KitchenButton" Content="Kitchen" Style="{StaticResource GameNavigationButton}" Checked="KitchenButton_Checked"/>
+                <RadioButton x:Name="BedroomButton" Content="Bedroom" Style="{StaticResource GameNavigationButton}" Checked="BedroomButton_Checked"/>
+                <RadioButton x:Name="GameroomButton" Content="Gameroom" Style="{StaticResource GameNavigationButton}" Checked="GameroomButton_Checked"/>
+                <RadioButton x:Name="ShopButton" Content="Shop" Style="{StaticResource GameNavigationButton}" Checked="ShopButton_Checked"/>
+            </StackPanel>
         </Viewbox>
     </Grid>
 </Window>

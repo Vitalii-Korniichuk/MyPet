@@ -48,7 +48,7 @@ namespace MyPet.Pages
         {
             if (PetGrid.SelectedItem != null)
             {
-                LoadGameWindow(PetGrid.SelectedItem as Pet);
+                LoadGameWindow((PetGrid.SelectedItem as Pet).Id);
             }
         }
         private void CreateButton_Click(object sender, RoutedEventArgs e)
