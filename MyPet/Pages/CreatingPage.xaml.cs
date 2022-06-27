@@ -53,15 +53,13 @@ namespace MyPet.Pages
         }
         private string GetPetType()
         {
-            if (CowboyType.IsSelected) { return "Cowboy"; }
-            else if (NerdType.IsSelected) { return "Nerd"; }
+            if (NerdType.IsSelected) { return "Nerd"; }
             else if (RapperType.IsSelected) { return "Rapper"; }
             else { return "Basic"; }
         }
         private string GetTypeImageSource()
         {
-            if (CowboyType.IsSelected) { return "/MyPet;component/Source/Images/Types/cowboy.png"; }
-            else if (NerdType.IsSelected) { return "/MyPet;component/Source/Images/Types/nerd.png"; }
+            if (NerdType.IsSelected) { return "/MyPet;component/Source/Images/Types/nerd.png"; }
             else if (RapperType.IsSelected) { return "/MyPet;component/Source/Images/Types/rapper.png"; }
             else { return "/MyPet;component/Source/Images/Types/basic.png"; }
         }

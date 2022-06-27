@@ -34,7 +34,10 @@
             </StackPanel>
         </Viewbox>
         <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Image x:Name="PetImage" Source="Source/Images/Pets/big_smile.png" Margin="700"/>
+            <Grid Margin="700">
+                <Image x:Name="PetImage"/>
+                <Image x:Name="GlassesImage"/>
+            </Grid>
         </Viewbox>
         <Viewbox HorizontalAlignment="Center" VerticalAlignment="Bottom">
             <StackPanel Orientation="Horizontal">

@@ -282,6 +282,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>PetDatabase.mdf</DependentUpon>
     </Content>
+    <Resource Include="Source\Images\Glasses\glasses.png" />
+    <Resource Include="Source\Images\Glasses\sunglasses.png" />
     <Resource Include="Source\Images\Bars\adult.png" />
     <Resource Include="Source\Images\Bars\baby.png" />
     <Resource Include="Source\Images\Bars\child.png" />
@@ -299,7 +301,6 @@
     <Resource Include="Source\Images\Logos\github.png" />
     <Resource Include="Source\Images\Logos\linkedin.png" />
     <Resource Include="Source\Images\Types\basic.png" />
-    <Resource Include="Source\Images\Types\cowboy.png" />
     <Resource Include="Source\Images\Types\nerd.png" />
     <Resource Include="Source\Images\Types\rapper.png" />
   </ItemGroup>

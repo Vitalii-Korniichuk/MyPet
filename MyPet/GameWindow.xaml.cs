@@ -38,6 +38,9 @@ namespace MyPet
         readonly ImageSource noSmileSource = new BitmapImage(new Uri(@"/Source/Images/Pets/no_smile.png", UriKind.Relative));
         readonly ImageSource openMouthSource = new BitmapImage(new Uri(@"/Source/Images/Pets/open_mouth.png", UriKind.Relative));
         readonly ImageSource sadSource = new BitmapImage(new Uri(@"/Source/Images/Pets/sad.png", UriKind.Relative));
+
+        readonly ImageSource glassesSource = new BitmapImage(new Uri(@"/Source/Images/Glasses/glasses.png", UriKind.Relative));
+        readonly ImageSource sunglassesSource = new BitmapImage(new Uri(@"/Source/Images/Glasses/sunglasses.png", UriKind.Relative));
         public GameWindow(int id)
         {
             InitializeComponent();
@@ -51,11 +54,25 @@ namespace MyPet
         private void InitializePet()
         {
             NameLabel.Content = mainPet.Name;
-            FindAge();
             MoneyLabel.Content = mainPet.Money;
+            FindAge();
             LoadNewValues();
+            SetPetMood();
+            SetGlasses();
             RefreshBars();
             mainPet.Visited = DateTime.Now;
+        }
+
+        private void SetGlasses()
+        {
+            switch (mainPet.Type)
+            {
+                case "Nerd": GlassesImage.Source = glassesSource;
+                             break;
+                case "Rapper": GlassesImage.Source = sunglassesSource;
+                               break;
+                default: break;
+            }
         }
 
         private void FindAge()
@@ -114,9 +131,14 @@ namespace MyPet
             mainPet.Thirst--;
             mainPet.Exhaustion--;
             mainPet.Boredom--;
+            SetPetMood();
+            RefreshBars();
+        }
 
+        private void SetPetMood()
+        {
             if (mainPet.Hunger >= hungerMaxValue / 2) { PetImage.Source = bigSmileSource; }
-            else if(mainPet.Hunger >= hungerMaxValue * 1 / 3) { PetImage.Source = noSmileSource; }
+            else if (mainPet.Hunger >= hungerMaxValue * 1 / 3) { PetImage.Source = noSmileSource; }
             else { PetImage.Source = sadSource; }
 
             if (mainPet.Thirst >= thirstMaxValue / 2) { PetImage.Source = bigSmileSource; }
@@ -131,7 +153,6 @@ namespace MyPet
             else if (mainPet.Boredom >= boredomMaxValue * 1 / 3) { PetImage.Source = noSmileSource; }
             else { PetImage.Source = sadSource; }
 
-            RefreshBars();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

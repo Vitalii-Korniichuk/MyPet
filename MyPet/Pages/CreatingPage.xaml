@@ -33,19 +33,13 @@
                 <Viewbox>
                     <StackPanel Orientation="Horizontal">
                         <Image Source="/MyPet;component/Source/Images/Types/basic.png" Height="64"/>
+                        <Viewbox>
                         <Label Content="Basic" Style="{StaticResource RegularLabel}" Foreground="{StaticResource Gray}"/>
+                        </Viewbox>
                     </StackPanel>
                 </Viewbox>
             </ComboBoxItem>
-                <ComboBoxItem x:Name="CowboyType">
-                    <StackPanel Orientation="Horizontal">
-                    <Image Source="/MyPet;component/Source/Images/Types/cowboy.png" Height="64"/>
-                        <Viewbox>
-                            <Label Content="Cowboy" Style="{StaticResource RegularLabel}" Foreground="{StaticResource Gray}"/>
-                        </Viewbox>
-                    </StackPanel>
-                </ComboBoxItem>
-                <ComboBoxItem x:Name="NerdType">
+            <ComboBoxItem x:Name="NerdType">
                     <StackPanel Orientation="Horizontal">
                     <Image Source="/MyPet;component/Source/Images/Types/nerd.png" Height="64"/>
                         <Viewbox>
