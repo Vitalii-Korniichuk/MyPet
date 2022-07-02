@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PetDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PetDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Pet">
           <Key>
             <PropertyRef Name="Id" />
@@ -13,19 +13,22 @@
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="TypeImageSource" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Created" Type="date" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
           <Property Name="Visited" Type="datetime" Nullable="false" />
           <Property Name="Money" Type="int" Nullable="false" />
           <Property Name="Hunger" Type="int" Nullable="false" />
           <Property Name="Thirst" Type="int" Nullable="false" />
           <Property Name="Exhaustion" Type="int" Nullable="false" />
           <Property Name="Boredom" Type="int" Nullable="false" />
+          <Property Name="Apples" Type="int" Nullable="false" />
+          <Property Name="Pizzas" Type="int" Nullable="false" />
+          <Property Name="Juice" Type="int" Nullable="false" />
+          <Property Name="Coke" Type="int" Nullable="false" />
         </EntityType>
         <EntityContainer Name="PetDatabaseModelStoreContainer">
           <EntitySet Name="Pet" EntityType="Self.Pet" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PetDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -37,13 +40,17 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TypeImageSource" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Created" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Visited" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Money" Type="Int32" Nullable="false" />
           <Property Name="Hunger" Type="Int32" Nullable="false" />
           <Property Name="Thirst" Type="Int32" Nullable="false" />
           <Property Name="Exhaustion" Type="Int32" Nullable="false" />
           <Property Name="Boredom" Type="Int32" Nullable="false" />
+          <Property Name="Apples" Type="Int32" Nullable="false" />
+          <Property Name="Pizzas" Type="Int32" Nullable="false" />
+          <Property Name="Coke" Type="Int32" Nullable="false" />
+          <Property Name="Juice" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityContainer Name="PetDatabaseEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Pets" EntityType="Self.Pet" />
@@ -57,6 +64,10 @@
           <EntitySetMapping Name="Pets">
             <EntityTypeMapping TypeName="PetDatabaseModel.Pet">
               <MappingFragment StoreEntitySet="Pet">
+                <ScalarProperty Name="Juice" ColumnName="Juice" />
+                <ScalarProperty Name="Coke" ColumnName="Coke" />
+                <ScalarProperty Name="Pizzas" ColumnName="Pizzas" />
+                <ScalarProperty Name="Apples" ColumnName="Apples" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Type" ColumnName="Type" />

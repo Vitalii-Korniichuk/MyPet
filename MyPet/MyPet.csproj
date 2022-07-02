@@ -282,6 +282,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>PetDatabase.mdf</DependentUpon>
     </Content>
+    <Resource Include="Source\Images\Pets\dead.png" />
+    <Resource Include="Source\Images\Types\skull.png" />
+    <Resource Include="Source\Images\Food\apple.png" />
+    <Resource Include="Source\Images\Food\coke.png" />
+    <Resource Include="Source\Images\Food\juice.png" />
+    <Resource Include="Source\Images\Food\pizza.png" />
     <Resource Include="Source\Images\Glasses\glasses.png" />
     <Resource Include="Source\Images\Glasses\sunglasses.png" />
     <Resource Include="Source\Images\Bars\adult.png" />
@@ -295,7 +301,6 @@
     <Resource Include="Source\Images\Bars\popper.png" />
     <Resource Include="Source\Images\Pets\big_smile.png" />
     <Resource Include="Source\Images\Pets\no_smile.png" />
-    <Resource Include="Source\Images\Pets\open_mouth.png" />
     <Resource Include="Source\Images\Pets\sad.png" />
     <Resource Include="Source\Images\Environments\home.png" />
     <Resource Include="Source\Images\Logos\github.png" />

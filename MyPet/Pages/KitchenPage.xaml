@@ -6,8 +6,26 @@
       xmlns:local="clr-namespace:MyPet.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800">
-
-    <Grid>
-        
-    </Grid>
+    <StackPanel HorizontalAlignment="Right" Margin="10">
+        <StackPanel Orientation="Horizontal">
+            <StackPanel>
+                <Image x:Name="AppleImage" Source="/MyPet;component/Source/Images/Food/apple.png" MouseLeftButtonDown="AppleImage_MouseLeftButtonDown"/>
+                <Label x:Name="AppleLabel" Content="Apple" Style="{StaticResource GameLabel}"/>
+            </StackPanel>
+            <StackPanel>
+                <Image x:Name="PizzaImage" Source="/MyPet;component/Source/Images/Food/pizza.png" MouseLeftButtonDown="PizzaImage_MouseLeftButtonDown"/>
+                <Label x:Name="PizzaLabel" Content="Pizza" Style="{StaticResource GameLabel}"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel>
+                <Image x:Name="JuiceImage" Source="/MyPet;component/Source/Images/Food/juice.png" MouseLeftButtonDown="JuiceImage_MouseLeftButtonDown"/>
+                <Label x:Name="JuiceLabel" Content="Juice" Style="{StaticResource GameLabel}"/>
+            </StackPanel>
+            <StackPanel>
+                <Image x:Name="CokeImage" Source="/MyPet;component/Source/Images/Food/coke.png" MouseLeftButtonDown="CokeImage_MouseLeftButtonDown"/>
+                <Label x:Name="CokeLabel" Content="Coke" Style="{StaticResource GameLabel}"/>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
 </Page>

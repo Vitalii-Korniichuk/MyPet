@@ -21,4 +21,9 @@
         <Setter Property="FontFamily" Value="{StaticResource PoppinsRegular}"/>
         <Setter Property="Foreground" Value="White"/>
     </Style>
+
+    <Style x:Key="GameLabel" TargetType="Label">
+        <Setter Property="FontFamily" Value="{StaticResource PoppinsRegular}"/>
+        <Setter Property="Foreground" Value="Black"/>
+    </Style>
 </ResourceDictionary>

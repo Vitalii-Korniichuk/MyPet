@@ -25,5 +25,9 @@ namespace MyPet.Models
         public int Thirst { get; set; }
         public int Exhaustion { get; set; }
         public int Boredom { get; set; }
+        public int Apples { get; set; }
+        public int Pizzas { get; set; }
+        public int Coke { get; set; }
+        public int Juice { get; set; }
     }
 }

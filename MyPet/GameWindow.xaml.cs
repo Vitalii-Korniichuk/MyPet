@@ -24,8 +24,8 @@ namespace MyPet
         PetDatabaseEntities entities = new PetDatabaseEntities();
 
         readonly HomePage home = new HomePage();
-        readonly KitchenPage kitchen = new KitchenPage();
         readonly BedroomPage bedroom = new BedroomPage();
+        KitchenPage kitchen;
         readonly GameroomPage gameroom = new GameroomPage();
         readonly ShopPage shop = new ShopPage();
 
@@ -36,8 +36,8 @@ namespace MyPet
 
         readonly ImageSource bigSmileSource = new BitmapImage(new Uri(@"/Source/Images/Pets/big_smile.png", UriKind.Relative));
         readonly ImageSource noSmileSource = new BitmapImage(new Uri(@"/Source/Images/Pets/no_smile.png", UriKind.Relative));
-        readonly ImageSource openMouthSource = new BitmapImage(new Uri(@"/Source/Images/Pets/open_mouth.png", UriKind.Relative));
         readonly ImageSource sadSource = new BitmapImage(new Uri(@"/Source/Images/Pets/sad.png", UriKind.Relative));
+        readonly ImageSource deadSource = new BitmapImage(new Uri(@"/Source/Images/Pets/dead.png", UriKind.Relative));
 
         readonly ImageSource glassesSource = new BitmapImage(new Uri(@"/Source/Images/Glasses/glasses.png", UriKind.Relative));
         readonly ImageSource sunglassesSource = new BitmapImage(new Uri(@"/Source/Images/Glasses/sunglasses.png", UriKind.Relative));
@@ -47,20 +47,24 @@ namespace MyPet
             InitializingSettings();
             mainPet = entities.Pets.Find(id);
             InitializePet();
-            timer.Tick += TimerTick;
-            timer.Interval = new TimeSpan(0, 0, 1);
-            timer.Start();
+            if (mainPet.Type != "Dead")
+            {
+                LoadNewValues();
+                FindAge();
+                timer.Tick += TimerTick;
+                timer.Interval = new TimeSpan(0, 0, 1);
+                timer.Start();
+            }
+            mainPet.Visited = DateTime.Now;
         }
         private void InitializePet()
         {
             NameLabel.Content = mainPet.Name;
-            MoneyLabel.Content = mainPet.Money;
-            FindAge();
-            LoadNewValues();
+            MoneyLabel.Content = String.Format("{0}$", mainPet.Money);
             SetPetMood();
             SetGlasses();
             RefreshBars();
-            mainPet.Visited = DateTime.Now;
+            kitchen = new KitchenPage(mainPet.Apples, mainPet.Pizzas, mainPet.Juice, mainPet.Coke);
         }
 
         private void SetGlasses()
@@ -127,12 +131,15 @@ namespace MyPet
         }
         private void TimerTick(object sender, EventArgs e)
         {
-            mainPet.Hunger--;
-            mainPet.Thirst--;
-            mainPet.Exhaustion--;
-            mainPet.Boredom--;
-            SetPetMood();
-            RefreshBars();
+            if (mainPet.Type != "Dead")
+            {
+                mainPet.Hunger--;
+                mainPet.Thirst--;
+                mainPet.Exhaustion--;
+                mainPet.Boredom--;
+                SetPetMood();
+                RefreshBars();
+            }
         }
 
         private void SetPetMood()
@@ -153,6 +160,12 @@ namespace MyPet
             else if (mainPet.Boredom >= boredomMaxValue * 1 / 3) { PetImage.Source = noSmileSource; }
             else { PetImage.Source = sadSource; }
 
+            if(mainPet.Hunger < 1 || mainPet.Thirst < 1 || mainPet.Exhaustion < 1 || mainPet.Boredom < 1)
+            {
+                mainPet.Type = "Dead";
+                mainPet.TypeImageSource = "/MyPet;component/Source/Images/Types/skull.png";
+                PetImage.Source = deadSource;
+            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

@@ -42,6 +42,10 @@ namespace MyPet.Pages
                 pet.Thirst = 25920 / 2;
                 pet.Exhaustion = 95040 / 2;
                 pet.Boredom = 25920 / 2;
+                pet.Apples = 1;
+                pet.Pizzas = 0;
+                pet.Juice = 1;
+                pet.Coke = 0;
                 entities.Pets.Add(pet);
                 entities.SaveChanges();
                 LoadGameWindow(pet.Id);
