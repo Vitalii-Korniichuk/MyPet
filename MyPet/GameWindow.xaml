@@ -4,33 +4,41 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyPet"
-        xmlns:controls="clr-namespace:MyPet.Controls"
         xmlns:converters="clr-namespace:Smilees.Converters"
-        xmlns:Models="clr-namespace:MyPet.Models" x:Class="MyPet.GameWindow"
+        xmlns:controls="clr-namespace:MyPet.Controls"
+        x:Class="MyPet.GameWindow"
         mc:Ignorable="d"
         Title="My Pet" x:Name="Window"
         Height="450" Width="800"
         Closing="Window_Closing">
     <Grid>
-        <Frame x:Name="EnvironmentFrame" NavigationUIVisibility="Hidden"/>
-        <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Height="{Binding ActualHeight, ConverterParameter=0.35, Converter={converters:PercentageConverter}, ElementName=Window}">
-            <StackPanel x:Name="InfoPanel">
-                <StackPanel Orientation="Horizontal">
-                    <Image x:Name="AgeImage" Source="Source/Images/Bars/baby.png" Margin="20"/>
-                    <Viewbox>
-                        <Label x:Name="NameLabel" Style="{StaticResource RegularLabel}" FontSize="72" Foreground="{StaticResource Gray}"/>
-                    </Viewbox>
+        <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Height="{Binding ActualHeight, ConverterParameter=0.6, Converter={converters:PercentageConverter}, ElementName=Window}">
+            <StackPanel>
+                <StackPanel x:Name="InfoPanel">
+                    <StackPanel Orientation="Horizontal">
+                        <Image x:Name="AgeImage" Margin="20"/>
+                        <Viewbox>
+                            <Label x:Name="NameLabel" Style="{StaticResource RegularLabel}" FontSize="72" Foreground="{StaticResource Gray}"/>
+                        </Viewbox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Image x:Name="MoneyImage" Source="/MyPet;component/Source/Images/Bars/money.png" Margin="20"/>
+                        <Viewbox>
+                            <Label x:Name="MoneyLabel" Style="{StaticResource RegularLabel}" FontSize="72" Foreground="{StaticResource Gray}"/>
+                        </Viewbox>
+                    </StackPanel>
+                    <controls:GameProgressBar x:Name="HungerBar" MaxValue="69120" BarImageSource="/MyPet;component/Source/Images/Bars/meat.png"/>
+                    <controls:GameProgressBar x:Name="ThirstBar" MaxValue="25920" BarImageSource="/MyPet;component/Source/Images/Bars/cup.png"/>
+                    <controls:GameProgressBar x:Name="ExhaustionBar" MaxValue="95040" BarImageSource="/MyPet;component/Source/Images/Bars/bed.png"/>
+                    <controls:GameProgressBar x:Name="BoredomBar" MaxValue="25920" BarImageSource="/MyPet;component/Source/Images/Bars/popper.png"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Image x:Name="MoneyImage" Source="Source/Images/Bars/money.png" Margin="20"/>
-                    <Viewbox>
-                        <Label x:Name="MoneyLabel" Style="{StaticResource RegularLabel}" FontSize="72" Foreground="{StaticResource Gray}"/>
-                    </Viewbox>
-                </StackPanel>
-                <controls:GameProgressBar x:Name="HungerBar" BarColor="Green" MaxValue="69120" BarImageSource="/MyPet;component/Source/Images/Bars/meat.png"/>
-                <controls:GameProgressBar x:Name="ThirstBar" BarColor="Green" MaxValue="25920" BarImageSource="/MyPet;component/Source/Images/Bars/cup.png"/>
-                <controls:GameProgressBar x:Name="ExhaustionBar" BarColor="Green" MaxValue="95040" BarImageSource="/MyPet;component/Source/Images/Bars/bed.png"/>
-                <controls:GameProgressBar x:Name="BoredomBar" BarColor="Green" MaxValue="25920" BarImageSource="/MyPet;component/Source/Images/Bars/popper.png"/>
+
+                <Viewbox Width="{Binding ElementName=InfoPanel, Path=ActualWidth}">
+                    <StackPanel>
+                        <Button x:Name="PlaygroundButton" Content="Playground" Margin="5 5 0 0" Style="{StaticResource LauncherButton}" Click="PlaygroundButton_Click"/>
+                        <Button x:Name="ShopButton" Content="Shop" Margin="5 5 0 0" Style="{StaticResource LauncherButton}" Click="ShopButton_Click"/>
+                    </StackPanel>
+                </Viewbox>
             </StackPanel>
         </Viewbox>
         <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -39,14 +47,42 @@
                 <Image x:Name="GlassesImage"/>
             </Grid>
         </Viewbox>
-        <Viewbox HorizontalAlignment="Center" VerticalAlignment="Bottom">
+        <Viewbox HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="{Binding ActualHeight, ConverterParameter=0.2, Converter={converters:PercentageConverter}, ElementName=Window}">
             <StackPanel Orientation="Horizontal">
-                <RadioButton x:Name="HomeButton" IsChecked="True" Content="Home" Style="{StaticResource GameNavigationButton}" Checked="HomeButton_Checked"/>
+                <RadioButton x:Name="HallButton" Content="Hall" Style="{StaticResource GameNavigationButton}" Checked="HallButton_Checked"/>
                 <RadioButton x:Name="KitchenButton" Content="Kitchen" Style="{StaticResource GameNavigationButton}" Checked="KitchenButton_Checked"/>
                 <RadioButton x:Name="BedroomButton" Content="Bedroom" Style="{StaticResource GameNavigationButton}" Checked="BedroomButton_Checked"/>
-                <RadioButton x:Name="GameroomButton" Content="Gameroom" Style="{StaticResource GameNavigationButton}" Checked="GameroomButton_Checked"/>
-                <RadioButton x:Name="ShopButton" Content="Shop" Style="{StaticResource GameNavigationButton}" Checked="ShopButton_Checked"/>
             </StackPanel>
+        </Viewbox>
+        <Viewbox x:Name="HallPanel" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" Width="100">
+            <Image x:Name="CameraImage" Source="/MyPet;component/Source/Images/Bars/camera.png" MouseLeftButtonDown="CameraImage_MouseLeftButtonDown"/>
+        </Viewbox>
+        <Viewbox x:Name="KitchenPanel" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" Width="200" Visibility="Hidden">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                        <Image x:Name="AppleImage" Source="/MyPet;component/Source/Images/Food/apple.png" MouseLeftButtonDown="AppleImage_MouseLeftButtonDown"/>
+                        <Label x:Name="AppleLabel" Content="Apple" Style="{StaticResource GameLabel}"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <Image x:Name="PizzaImage" Source="/MyPet;component/Source/Images/Food/pizza.png" MouseLeftButtonDown="PizzaImage_MouseLeftButtonDown"/>
+                        <Label x:Name="PizzaLabel" Content="Pizza" Style="{StaticResource GameLabel}"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                        <Image x:Name="JuiceImage" Source="/MyPet;component/Source/Images/Food/juice.png" MouseLeftButtonDown="JuiceImage_MouseLeftButtonDown"/>
+                        <Label x:Name="JuiceLabel" Content="Juice" Style="{StaticResource GameLabel}"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <Image x:Name="CokeImage" Source="/MyPet;component/Source/Images/Food/coke.png" MouseLeftButtonDown="CokeImage_MouseLeftButtonDown"/>
+                        <Label x:Name="CokeLabel" Content="Coke" Style="{StaticResource GameLabel}"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Viewbox>
+        <Viewbox x:Name="BedroomPanel" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" Width="150" Visibility="Hidden">
+            <Image x:Name="BedImage" MouseLeftButtonDown="BedImage_MouseLeftButtonDown" Source="/MyPet;component/Source/Images/Bars/bed.png"/>
         </Viewbox>
     </Grid>
 </Window>

@@ -1,0 +1,64 @@
+﻿<Window x:Class="MyPet.ShopDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyPet"
+        mc:Ignorable="d"
+        Height="450" Width="800"
+        Background="{StaticResource Gray}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Viewbox Grid.Column="0" HorizontalAlignment="Left">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/MyPet;component/Source/Images/Bars/money.png" Margin="20"/>
+                    <Viewbox>
+                        <Label x:Name="MoneyLabel" Style="{StaticResource RegularLabel}" FontSize="72"/>
+                    </Viewbox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/MyPet;component/Source/Images/Food/apple.png" Margin="20"/>
+                    <Viewbox>
+                        <Label x:Name="AppleLabel" Style="{StaticResource RegularLabel}" FontSize="72"/>
+                    </Viewbox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Image x:Name="PizzaImage" Source="/MyPet;component/Source/Images/Food/pizza.png" Margin="20"/>
+                    <Viewbox>
+                        <Label x:Name="PizzaLabel" Style="{StaticResource RegularLabel}" FontSize="72"/>
+                    </Viewbox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/MyPet;component/Source/Images/Food/juice.png" Margin="20"/>
+                    <Viewbox>
+                        <Label x:Name="JuiceLabel" Style="{StaticResource RegularLabel}" FontSize="72"/>
+                    </Viewbox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/MyPet;component/Source/Images/Food/coke.png" Margin="20"/>
+                    <Viewbox>
+                        <Label x:Name="CokeLabel" Style="{StaticResource RegularLabel}" FontSize="72"/>
+                    </Viewbox>
+                </StackPanel>
+            </StackPanel>
+        </Viewbox>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3.5*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel>
+
+            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="CancelButton" Content="Cancel" Style="{StaticResource LauncherButton}"/>
+                <Button x:Name="BuyButton" Content="Buy products" Style="{StaticResource LauncherButton}"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

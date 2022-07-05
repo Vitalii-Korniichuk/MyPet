@@ -29,5 +29,6 @@ namespace MyPet.Models
         public int Pizzas { get; set; }
         public int Coke { get; set; }
         public int Juice { get; set; }
+        public bool IsSleeping { get; set; }
     }
 }

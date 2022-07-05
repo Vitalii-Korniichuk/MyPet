@@ -20,6 +20,7 @@
           <Property Name="Thirst" Type="int" Nullable="false" />
           <Property Name="Exhaustion" Type="int" Nullable="false" />
           <Property Name="Boredom" Type="int" Nullable="false" />
+          <Property Name="IsSleeping" Type="bit" Nullable="false" />
           <Property Name="Apples" Type="int" Nullable="false" />
           <Property Name="Pizzas" Type="int" Nullable="false" />
           <Property Name="Juice" Type="int" Nullable="false" />
@@ -51,6 +52,7 @@
           <Property Name="Pizzas" Type="Int32" Nullable="false" />
           <Property Name="Coke" Type="Int32" Nullable="false" />
           <Property Name="Juice" Type="Int32" Nullable="false" />
+          <Property Name="IsSleeping" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityContainer Name="PetDatabaseEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Pets" EntityType="Self.Pet" />
@@ -64,6 +66,7 @@
           <EntitySetMapping Name="Pets">
             <EntityTypeMapping TypeName="PetDatabaseModel.Pet">
               <MappingFragment StoreEntitySet="Pet">
+                <ScalarProperty Name="IsSleeping" ColumnName="IsSleeping" />
                 <ScalarProperty Name="Juice" ColumnName="Juice" />
                 <ScalarProperty Name="Coke" ColumnName="Coke" />
                 <ScalarProperty Name="Pizzas" ColumnName="Pizzas" />

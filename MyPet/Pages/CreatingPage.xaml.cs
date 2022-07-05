@@ -38,10 +38,11 @@ namespace MyPet.Pages
                 pet.Created = DateTime.Now;
                 pet.Visited = DateTime.Now;
                 pet.Money = 100;
-                pet.Hunger = 69120 / 2;
-                pet.Thirst = 25920 / 2;
-                pet.Exhaustion = 95040 / 2;
-                pet.Boredom = 25920 / 2;
+                pet.Hunger = 69120 / 2 - 100;
+                pet.Thirst = 25920 / 2 - 100;
+                pet.Exhaustion = 95040 / 2 - 100;
+                pet.Boredom = 25920 / 2 - 100;
+                pet.IsSleeping = false;
                 pet.Apples = 1;
                 pet.Pizzas = 0;
                 pet.Juice = 1;

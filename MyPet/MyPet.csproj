@@ -85,15 +85,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ShopDialog.xaml.cs">
+      <DependentUpon>ShopDialog.xaml</DependentUpon>
+    </Compile>
     <Page Include="Controls\GameProgressBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GameWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\BedroomPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -105,19 +104,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\GameroomPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\GamesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\HomePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\KitchenPage.xaml">
+    <Page Include="Pages\PlaygroundPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -125,11 +116,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ShopPage.xaml">
+    <Page Include="Pages\WelcomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\WelcomePage.xaml">
+    <Page Include="ShopDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -170,28 +161,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PetModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\BedroomPage.xaml.cs">
-      <DependentUpon>BedroomPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\CreatingPage.xaml.cs">
       <DependentUpon>CreatingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\GalleryPage.xaml.cs">
       <DependentUpon>GalleryPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\GameroomPage.xaml.cs">
-      <DependentUpon>GameroomPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\GamesPage.xaml.cs">
       <DependentUpon>GamesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\HomePage.xaml.cs">
-      <DependentUpon>HomePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\KitchenPage.xaml.cs">
-      <DependentUpon>KitchenPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\PageBase.cs" />
+    <Compile Include="Pages\PlaygroundPage.xaml.cs">
+      <DependentUpon>PlaygroundPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
@@ -205,9 +187,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pages\ShopPage.xaml.cs">
-      <DependentUpon>ShopPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
     </Compile>
@@ -282,7 +261,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>PetDatabase.mdf</DependentUpon>
     </Content>
+    <Resource Include="Source\Images\Bars\camera.png" />
     <Resource Include="Source\Images\Pets\dead.png" />
+    <Resource Include="Source\Images\Pets\sleep.png" />
     <Resource Include="Source\Images\Types\skull.png" />
     <Resource Include="Source\Images\Food\apple.png" />
     <Resource Include="Source\Images\Food\coke.png" />
@@ -302,7 +283,6 @@
     <Resource Include="Source\Images\Pets\big_smile.png" />
     <Resource Include="Source\Images\Pets\no_smile.png" />
     <Resource Include="Source\Images\Pets\sad.png" />
-    <Resource Include="Source\Images\Environments\home.png" />
     <Resource Include="Source\Images\Logos\github.png" />
     <Resource Include="Source\Images\Logos\linkedin.png" />
     <Resource Include="Source\Images\Types\basic.png" />
@@ -324,7 +304,9 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Source\Images\Environments\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyPet.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,13 +17,21 @@ using System.Windows.Shapes;
 namespace MyPet.Pages
 {
     /// <summary>
-    /// Interaction logic for BedroomPage.xaml
+    /// Interaction logic for PlaygroundPage.xaml
     /// </summary>
-    public partial class BedroomPage : Page
+    public partial class PlaygroundPage : Page
     {
-        public BedroomPage()
+        Pet mainPet;
+        PetDatabaseEntities entities = new PetDatabaseEntities();
+        public PlaygroundPage(int id)
         {
             InitializeComponent();
+            mainPet = entities.Pets.Find(id);
+        }
+        public void SavePet()
+        {
+            mainPet.Visited = DateTime.Now;
+            entities.SaveChanges();
         }
     }
 }
