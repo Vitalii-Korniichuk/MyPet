@@ -4,14 +4,20 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyPet"
+        xmlns:controls="clr-namespace:MyPet.Controls"
         mc:Ignorable="d"
         Height="450" Width="800"
-        Background="{StaticResource Gray}">
+        Title="Shop"
+        Background="{StaticResource Gray}" Icon="Source/Images/Bars/money.png" WindowStartupLocation="CenterScreen">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <Viewbox Grid.Column="0" HorizontalAlignment="Left">
             <StackPanel>
@@ -47,18 +53,24 @@
                 </StackPanel>
             </StackPanel>
         </Viewbox>
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="3.5*"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <StackPanel>
-
+        <Viewbox Grid.Column="1" HorizontalAlignment="Left">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Margin="0 0 5 0">
+                    <controls:ProductPanel x:Name="ApplePanel" ProductName="Apple 3$" MouseLeftButtonDown="ApplePanel_MouseLeftButtonDown" MouseMove="ApplePanel_MouseMove"/>
+                    <controls:ProductPanel x:Name="PizzaPanel" ProductName="Pizza 5$" MouseLeftButtonDown="PizzaPanel_MouseLeftButtonDown" MouseMove="PizzaPanel_MouseMove"/>
+                </StackPanel>
+                <StackPanel>
+                    <controls:ProductPanel x:Name="JuicePanel" ProductName="Juice 2$" MouseLeftButtonDown="JuicePanel_MouseLeftButtonDown" MouseMove="JuicePanel_MouseMove"/>
+                    <controls:ProductPanel x:Name="CokePanel" ProductName="Coke 3$" MouseLeftButtonDown="CokePanel_MouseLeftButtonDown" MouseMove="CokePanel_MouseMove"/>
+                </StackPanel>
             </StackPanel>
-            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button x:Name="CancelButton" Content="Cancel" Style="{StaticResource LauncherButton}"/>
-                <Button x:Name="BuyButton" Content="Buy products" Style="{StaticResource LauncherButton}"/>
-            </StackPanel>
-        </Grid>
+        </Viewbox>
+        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="CancelButton" Content="Cancel" Style="{StaticResource LauncherButton}" Click="CancelButton_Click"/>
+            <Button x:Name="BuyButton" Content="Buy products" Style="{StaticResource LauncherButton}" Click="BuyButton_Click"/>
+        </StackPanel>
+        <Viewbox Grid.Row="1" HorizontalAlignment="Left">
+            <Label x:Name="SumLabel" Content="0$" Style="{StaticResource RegularLabel}"/>
+        </Viewbox>
     </Grid>
 </Window>

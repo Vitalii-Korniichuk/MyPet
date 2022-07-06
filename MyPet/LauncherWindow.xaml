@@ -10,7 +10,7 @@
         x:Name="Window"
         Height="450" Width="800"
         MinHeight="{Binding ElementName=GamesButton, Path=ActualHeight, Converter={converters:PercentageConverter}, ConverterParameter='4'}"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" Icon="Source/Images/Types/nerd.png">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition MinWidth="{Binding ElementName=Window, Path=ActualWidth, Converter={converters:PercentageConverter}, ConverterParameter='0.1'}"/>

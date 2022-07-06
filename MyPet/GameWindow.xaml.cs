@@ -163,15 +163,18 @@ namespace MyPet
         {
             if (mainPet.Type != "Dead" && !mainPet.IsSleeping)
             {
-                mainPet.Hunger--;
-                mainPet.Thirst--;
-                mainPet.Exhaustion--;
-                mainPet.Boredom--;
+                mainPet.Hunger-=3;
+                mainPet.Thirst-=3;
+                mainPet.Exhaustion-=3;
+                mainPet.Boredom-=3;
                 SetPetMood();
+                SetPetAlive();
             }
             if (mainPet.IsSleeping)
             {
-                mainPet.Exhaustion += 3;
+                mainPet.Exhaustion += 9;
+                mainPet.Hunger --;
+                mainPet.Thirst --;
             }
             RefreshBars();
         }
@@ -298,7 +301,6 @@ namespace MyPet
         {
             if (!mainPet.IsSleeping)
             {
-                mainPet.IsSleeping = true;
                 Sleeping();
             }
             else
@@ -313,7 +315,7 @@ namespace MyPet
 
         private void Sleeping()
         {
-            BedroomButton.IsChecked = true;
+            mainPet.IsSleeping = true;
             PetImage.Source = sleepSource;
         }
 
@@ -334,7 +336,16 @@ namespace MyPet
 
         private void ShopButton_Click(object sender, RoutedEventArgs e)
         {
-
+            SavePet();
+            ShopDialog shop = new ShopDialog(mainPet.Id);
+            bool? dialogResult = shop.ShowDialog();
+            if (dialogResult == true)
+            {
+                entities = new PetDatabaseEntities();
+                mainPet = entities.Pets.Find(mainPet.Id);
+                InitializePet();
+                InitializeFridge();
+            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
