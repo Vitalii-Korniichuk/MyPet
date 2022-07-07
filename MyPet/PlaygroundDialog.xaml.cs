@@ -74,6 +74,7 @@ namespace MyPet
                 {
                     timer.Stop();
                     mainPet.Money += score * 10;
+                    mainPet.Boredom += score * 50;
                     if (score > mainPet.Record)
                     {
                         mainPet.Record = score;

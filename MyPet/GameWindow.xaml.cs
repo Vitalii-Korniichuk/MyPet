@@ -50,11 +50,10 @@ namespace MyPet
             InitializeComponent();
             InitializeSettings();
             mainPet = entities.Pets.Find(id);
+            LoadNewValues();
             InitializePet();
             HallButton.IsChecked=true;
-            if (mainPet.Type != "Dead")
-            {
-                LoadNewValues();
+            if (mainPet.Type != "Dead") {
                 FindAge();
                 timer.Tick += TimerTick;
                 timer.Interval = new TimeSpan(0, 0, 1);
