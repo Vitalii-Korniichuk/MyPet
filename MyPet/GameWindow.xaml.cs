@@ -48,6 +48,7 @@ namespace MyPet
         public GameWindow(int id)
         {
             InitializeComponent();
+            InitializeSettings();
             mainPet = entities.Pets.Find(id);
             InitializePet();
             HallButton.IsChecked=true;
@@ -60,6 +61,19 @@ namespace MyPet
                 timer.Start();
             }
         }
+
+        private void InitializeSettings()
+        {
+            if (Properties.Settings.Default.Fullscreen)
+            {
+                Window.WindowState = WindowState.Maximized;
+            }
+            if (!Properties.Settings.Default.BorderVisibility)
+            {
+                Window.WindowStyle = WindowStyle.None;
+            }
+        }
+
         private void InitializePet()
         {
             NameLabel.Content = mainPet.Name;
@@ -374,6 +388,14 @@ namespace MyPet
             LauncherWindow launcher = new LauncherWindow();
             launcher.PageFrame.Navigate(new GamesPage());
             launcher.Show();
+        }
+
+        private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if(e.Key == Key.Escape)
+            {
+                this.Close();
+            }
         }
     }
 }

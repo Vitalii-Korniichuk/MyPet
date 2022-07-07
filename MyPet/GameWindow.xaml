@@ -10,7 +10,7 @@
         mc:Ignorable="d"
         Title="My Pet" x:Name="Window"
         Height="450" Width="800"
-        Closing="Window_Closing" Icon="Source/Images/Bars/popper.png" WindowStartupLocation="CenterScreen">
+        Closing="Window_Closing" Icon="Source/Images/Bars/popper.png" WindowStartupLocation="CenterScreen" KeyDown="Window_KeyDown">
     <Grid>
         <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Height="{Binding ActualHeight, ConverterParameter=0.6, Converter={converters:PercentageConverter}, ElementName=Window}">
             <StackPanel>
