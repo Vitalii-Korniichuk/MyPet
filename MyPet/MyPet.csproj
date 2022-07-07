@@ -213,6 +213,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>PetModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="ClassDiagram.cd" />
     <None Include="Models\PetModel.edmx.diagram">
       <DependentUpon>PetModel.edmx</DependentUpon>
     </None>
