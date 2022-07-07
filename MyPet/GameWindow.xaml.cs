@@ -3,6 +3,7 @@ using MyPet.Models;
 using MyPet.Pages;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -29,7 +31,7 @@ namespace MyPet
         const int exhaustionMaxValue = 95040;
         const int boredomMaxValue = 25920;
 
-        int happinessLevel = 100;
+        int happinessLevel;
 
         readonly ImageSource bigSmileSource = new BitmapImage(new Uri(@"/Source/Images/Pets/big_smile.png", UriKind.Relative));
         readonly ImageSource noSmileSource = new BitmapImage(new Uri(@"/Source/Images/Pets/no_smile.png", UriKind.Relative));
@@ -183,13 +185,30 @@ namespace MyPet
         {
             SetHappinessLevel();
 
-            if (happinessLevel >= 60) { PetImage.Source = bigSmileSource; }
-            else if (happinessLevel >= 30) { PetImage.Source = noSmileSource; }
-            else { PetImage.Source = sadSource; }
+            if (happinessLevel >= 75)
+            {
+                PetImage.Source = bigSmileSource;
+                GlassesImage.Margin = new Thickness(700, 710, 700, 690);
+            }
+            else if (happinessLevel >= 35)
+            {
+                PetImage.Source = noSmileSource;
+                GlassesImage.Margin = new Thickness(700, 680, 700, 720);
+            }
+            else
+            {
+                PetImage.Source = sadSource;
+                GlassesImage.Margin = new Thickness(700, 700, 700, 700);
+            }
         }
 
         private void SetHappinessLevel()
         {
+            double hungerPercentage =  (double)mainPet.Hunger / (double)hungerMaxValue * 100.0;
+            double thirstPercentage = (double)mainPet.Thirst / (double)thirstMaxValue * 100.0;
+            double exhaustionPercentage = (double)mainPet.Exhaustion / (double)exhaustionMaxValue * 100.0;
+            double boredomPercentage = (double)mainPet.Boredom / (double)boredomMaxValue * 100.0;
+            happinessLevel = (int)((hungerPercentage + thirstPercentage + exhaustionPercentage + boredomPercentage) / 4);
         }
 
         private void SetPetAlive()
@@ -204,7 +223,6 @@ namespace MyPet
         private void HallButton_Checked(object sender, RoutedEventArgs e)
         {
             SavePet();
-            HallPanel.Visibility = Visibility.Visible;
 
             KitchenPanel.Visibility = Visibility.Hidden;
             BedroomPanel.Visibility = Visibility.Hidden;
@@ -216,7 +234,6 @@ namespace MyPet
             InitializeFridge();
             KitchenPanel.Visibility = Visibility.Visible;
 
-            HallPanel.Visibility = Visibility.Hidden;
             BedroomPanel.Visibility = Visibility.Hidden;
         }
 
@@ -247,7 +264,6 @@ namespace MyPet
             SavePet();
             BedroomPanel.Visibility = Visibility.Visible;
 
-            HallPanel.Visibility = Visibility.Hidden;
             KitchenPanel.Visibility = Visibility.Hidden;
 
         }
@@ -318,11 +334,6 @@ namespace MyPet
             mainPet.IsSleeping = true;
             PetImage.Source = sleepSource;
         }
-
-        private void CameraImage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
         public void SavePet()
         {
             mainPet.Visited = DateTime.Now;
@@ -331,7 +342,14 @@ namespace MyPet
 
         private void PlaygroundButton_Click(object sender, RoutedEventArgs e)
         {
-
+            SavePet();
+            PlaygroundDialog playground = new PlaygroundDialog(mainPet.Id);
+            this.Hide();
+            playground.ShowDialog();
+            this.Show();
+            entities = new PetDatabaseEntities();
+            mainPet = entities.Pets.Find(mainPet.Id);
+            InitializePet();
         }
 
         private void ShopButton_Click(object sender, RoutedEventArgs e)
@@ -339,6 +357,7 @@ namespace MyPet
             SavePet();
             ShopDialog shop = new ShopDialog(mainPet.Id);
             bool? dialogResult = shop.ShowDialog();
+            this.Hide();
             if (dialogResult == true)
             {
                 entities = new PetDatabaseEntities();
@@ -346,6 +365,7 @@ namespace MyPet
                 InitializePet();
                 InitializeFridge();
             }
+            this.Show();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

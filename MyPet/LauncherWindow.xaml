@@ -20,8 +20,6 @@
         <!--Navigation menu-->
         <StackPanel Background="{StaticResource Gray}">
             <RadioButton x:Name="GamesButton" Content="Games" Checked="GamesButton_Checked" Style="{StaticResource NavigationMenuButton}"/>
-            <RadioButton x:Name="GalleryButton" Content="Gallery" Checked="GalleryButton_Checked" Style="{StaticResource NavigationMenuButton}"
-                         Height="{Binding ElementName=GamesButton, Path=ActualHeight}"/>
             <RadioButton x:Name="SettingsButton" Content="Settings" Checked="SettingsButton_Checked" Style="{StaticResource NavigationMenuButton}"
                          Height="{Binding ElementName=GamesButton, Path=ActualHeight}"/>
         </StackPanel>

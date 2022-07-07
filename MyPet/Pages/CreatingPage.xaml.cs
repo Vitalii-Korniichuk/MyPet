@@ -47,6 +47,7 @@ namespace MyPet.Pages
                 pet.Pizzas = 0;
                 pet.Juice = 1;
                 pet.Coke = 0;
+                pet.Record = 0;
                 entities.Pets.Add(pet);
                 entities.SaveChanges();
                 LoadGameWindow(pet.Id);

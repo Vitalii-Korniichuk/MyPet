@@ -42,9 +42,9 @@
             </StackPanel>
         </Viewbox>
         <Viewbox HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Grid Margin="700">
-                <Image x:Name="PetImage"/>
-                <Image x:Name="GlassesImage"/>
+            <Grid>
+                <Image x:Name="PetImage" Margin="700"/>
+                <Image x:Name="GlassesImage" Margin="700"/>
             </Grid>
         </Viewbox>
         <Viewbox HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="{Binding ActualHeight, ConverterParameter=0.2, Converter={converters:PercentageConverter}, ElementName=Window}">
@@ -53,9 +53,6 @@
                 <RadioButton x:Name="KitchenButton" Content="Kitchen" Style="{StaticResource GameNavigationButton}" Checked="KitchenButton_Checked"/>
                 <RadioButton x:Name="BedroomButton" Content="Bedroom" Style="{StaticResource GameNavigationButton}" Checked="BedroomButton_Checked"/>
             </StackPanel>
-        </Viewbox>
-        <Viewbox x:Name="HallPanel" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" Width="100">
-            <Image x:Name="CameraImage" Source="/MyPet;component/Source/Images/Bars/camera.png" MouseLeftButtonDown="CameraImage_MouseLeftButtonDown"/>
         </Viewbox>
         <Viewbox x:Name="KitchenPanel" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10" Width="200" Visibility="Hidden">
             <StackPanel>

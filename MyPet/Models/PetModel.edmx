@@ -25,6 +25,7 @@
           <Property Name="Pizzas" Type="int" Nullable="false" />
           <Property Name="Juice" Type="int" Nullable="false" />
           <Property Name="Coke" Type="int" Nullable="false" />
+          <Property Name="Record" Type="int" Nullable="false" />
         </EntityType>
         <EntityContainer Name="PetDatabaseModelStoreContainer">
           <EntitySet Name="Pet" EntityType="Self.Pet" Schema="dbo" store:Type="Tables" />
@@ -53,6 +54,7 @@
           <Property Name="Coke" Type="Int32" Nullable="false" />
           <Property Name="Juice" Type="Int32" Nullable="false" />
           <Property Name="IsSleeping" Type="Boolean" Nullable="false" />
+          <Property Name="Record" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityContainer Name="PetDatabaseEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Pets" EntityType="Self.Pet" />
@@ -66,6 +68,7 @@
           <EntitySetMapping Name="Pets">
             <EntityTypeMapping TypeName="PetDatabaseModel.Pet">
               <MappingFragment StoreEntitySet="Pet">
+                <ScalarProperty Name="Record" ColumnName="Record" />
                 <ScalarProperty Name="IsSleeping" ColumnName="IsSleeping" />
                 <ScalarProperty Name="Juice" ColumnName="Juice" />
                 <ScalarProperty Name="Coke" ColumnName="Coke" />

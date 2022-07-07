@@ -20,7 +20,6 @@ namespace MyPet
     public partial class LauncherWindow : Window
     {
         readonly GamesPage games = new GamesPage();
-        readonly GalleryPage gallery = new GalleryPage();
         readonly SettingsPage settings = new SettingsPage();
         public LauncherWindow()
         {
@@ -30,11 +29,6 @@ namespace MyPet
         private void GamesButton_Checked(object sender, RoutedEventArgs e)
         {
             PageFrame.Navigate(games);
-        }
-
-        private void GalleryButton_Checked(object sender, RoutedEventArgs e)
-        {
-            PageFrame.Navigate(gallery);
         }
 
         private void SettingsButton_Checked(object sender, RoutedEventArgs e)

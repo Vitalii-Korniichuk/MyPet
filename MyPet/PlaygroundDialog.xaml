@@ -1,0 +1,25 @@
+﻿<Window x:Class="MyPet.PlaygroundDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyPet"
+        xmlns:converters="clr-namespace:Smilees.Converters"
+        mc:Ignorable="d"
+        Title="Playground"
+        Height="450" Width="450"
+        x:Name="Window" ResizeMode="CanMinimize"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Viewbox Height="{Binding ElementName=Window, Path=ActualHeight, Converter={converters:PercentageConverter}, ConverterParameter='0.15'}" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Label x:Name="RecordLabel" Content="Record: 0" Style="{StaticResource HeadingLabel}" Foreground="{StaticResource Gray}" Margin="5"/>
+        </Viewbox>
+        <Viewbox x:Name="MenuBox" Height="{Binding ElementName=Window, Path=ActualHeight, Converter={converters:PercentageConverter}, ConverterParameter='0.3'}" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="PlayButton" Content="Start a new game" Style="{StaticResource LauncherButton}" Click="PlayButton_Click"/>
+        </Viewbox>
+        <Canvas x:Name="MainCanvas" Focusable="True" MouseMove="MainCanvas_MouseMove" Visibility="Hidden">
+            <Image x:Name="PetImage" Source="Source/Images/Pets/big_smile.png" Width="70" Height="70" Canvas.Top="350"/>
+            <Image x:Name="GlassesImage" Width="70" Height="70" Canvas.Top="350"/>
+        </Canvas>
+    </Grid>
+</Window>
